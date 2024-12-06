@@ -8,29 +8,29 @@ import {
   ParseIntPipe,
   Patch,
   UseGuards,
-} from '@nestjs/common';
-import { UserService } from './user.service';
+} from "@nestjs/common";
+import { UserService } from "./user.service";
 import {
   ApiBearerAuth,
   ApiNoContentResponse,
   ApiOkResponse,
   ApiOperation,
-} from '@nestjs/swagger';
-import { UserDto } from './dto/user.dto';
-import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
-import { UpdateUserPayload } from './payload/update-user.payload';
-import { CurrentUser } from '../auth/decorator/user.decorator';
-import { UserBaseInfo } from '../auth/type/user-base-info.type';
+} from "@nestjs/swagger";
+import { UserDto } from "./dto/user.dto";
+import { JwtAuthGuard } from "../auth/guard/jwt-auth.guard";
+import { UpdateUserPayload } from "./payload/update-user.payload";
+import { CurrentUser } from "../auth/decorator/user.decorator";
+import { UserBaseInfo } from "../auth/type/user-base-info.type";
 
-@Controller('users')
+@Controller("users")
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get(':userId')
-  @ApiOperation({ summary: '유저 정보를 가져옵니다' })
+  @Get(":userId")
+  @UseGuards(JwtAuthGuard)
+  @ApiOperation({ summary: "유저 정보를 가져옵니다" })
   @ApiOkResponse({ type: UserDto })
-  async getUserById(@Param('userId') userId: number): Promise<UserDto> {
-    return this.userService.getUserById(userId);
+  async getUser(@CurrentUser() user: UserBaseInfo): Promise<UserDto> {
+    return this.userService.getUser(user);
   }
-
 }
