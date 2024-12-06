@@ -35,8 +35,10 @@ AI 기반 웹서비스를 통해 사용자의 일과를 분석하여 기후 변�
 <!-- <img width="614" alt="아키텍처이미지" src="https://github.com/user-attachments/assets/bdd54eb5-da96-4838-938c-7c82fb0d820b"> -->
 
 ---
+<div align="center">
+<h2>멤버</h2>
+</div>
 
-## 멤버
 | 직책 | 담당 | 이름 |
 |--|--|--|
 | 팀장 | FE | 김보민 | 
@@ -45,4 +47,6 @@ AI 기반 웹서비스를 통해 사용자의 일과를 분석하여 기후 변�
 | 팀원 | AI | 신혜원 |
 | 팀원 | AI | 최가빈 | 
 
-### 시연 영상 
+<div align="center">
+<h2>시연 영상</h2>
+</div> 
