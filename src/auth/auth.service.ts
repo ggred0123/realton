@@ -28,19 +28,6 @@ export class AuthService {
       throw new ConflictException('이미 사용중인 이메일입니다.');
     }
 
-    const category = await this.authRepository.getCategoryById(
-      payload.categoryId,
-    );
-    if (!category) {
-      throw new NotFoundException('존재하지 않는 카테고리입니다.');
-    }
-
-    if (payload.cityId) {
-      const city = await this.authRepository.getCityById(payload.cityId);
-      if (!city) {
-        throw new NotFoundException('존재하지 않는 도시입니다.');
-      }
-    }
 
     const hashedPassword = await this.passwordService.getEncryptPassword(
       payload.password,
@@ -50,9 +37,7 @@ export class AuthService {
       email: payload.email,
       password: hashedPassword,
       name: payload.name,
-      birthday: payload.birthday,
-      categoryId: payload.categoryId,
-      cityId: payload.cityId,
+      totalExp: payload.totalExp,
     };
 
     const createdUser = await this.authRepository.createUser(inputData);

@@ -5,53 +5,18 @@ import {
   IsOptional,
   IsPositive,
   IsString,
+  Min,
 } from 'class-validator';
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
+import { min } from 'lodash';
 
 export class UpdateUserPayload {
   @IsOptional()
-  @IsEmail()
-  @ApiPropertyOptional({
-    description: '이메일',
-    type: String,
-  })
-  email?: string | null;
-
-  @IsOptional()
-  @IsString()
-  @ApiPropertyOptional({
-    description: '이름',
-    type: String,
-  })
-  name?: string | null;
-
-  @IsOptional()
-  @IsDate()
-  @Type(() => Date)
-  @ApiPropertyOptional({
-    description: '생일',
-    type: Date,
-    nullable: true,
-  })
-  birthday?: Date | null;
-
-  @IsOptional()
   @IsInt()
-  @IsPositive()
+  @Min(0)
   @ApiPropertyOptional({
-    description: '도시 ID',
-    type: Number,
-    nullable: true,
-  })
-  cityId?: number | null;
-
-  @IsOptional()
-  @IsInt()
-  @IsPositive()
-  @ApiPropertyOptional({
-    description: '카테고리 ID',
+    description: '경험치',
     type: Number,
   })
-  categoryId?: number | null;
-}
+  totalExp?: number | null;}

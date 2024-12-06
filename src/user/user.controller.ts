@@ -33,29 +33,4 @@ export class UserController {
     return this.userService.getUserById(userId);
   }
 
-  @Patch(':userId')
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: '유저 정보를 수정합니다' })
-  @ApiOkResponse({ type: UserDto })
-  async updateUser(
-    @Param('userId', ParseIntPipe) userId: number,
-    @Body() payload: UpdateUserPayload,
-    @CurrentUser() user: UserBaseInfo,
-  ): Promise<UserDto> {
-    return this.userService.updateUser(userId, payload, user);
-  }
-
-  @Delete(':userId')
-  @HttpCode(204)
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: '유저 탈퇴' })
-  @ApiNoContentResponse()
-  async deleteUser(
-    @Param('userId') userId: number,
-    @CurrentUser() user: UserBaseInfo,
-  ): Promise<void> {
-    return this.userService.deleteUser(userId, user);
-  }
 }
