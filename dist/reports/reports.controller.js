@@ -43,6 +43,7 @@ __decorate([
 ], ReportsController.prototype, "getReports", null);
 exports.ReportsController = ReportsController = __decorate([
     (0, common_1.Controller)("reports"),
+    (0, swagger_1.ApiTags)("reports API"),
     __metadata("design:paramtypes", [reports_service_1.ReportsService])
 ], ReportsController);
 //# sourceMappingURL=reports.controller.js.map

@@ -28,6 +28,7 @@ import { UserBaseInfo } from "../auth/type/user-base-info.type";
 import { DateQuery } from "./query/reports.query";
 
 @Controller("reports")
+@ApiTags("reports API")
 export class ReportsController {
   constructor(private readonly reportsService: ReportsService) {}
 
