@@ -73,18 +73,16 @@ model Reports {
 
   user  User  @relation(fields: [userId], references: [id])
   answers Answers @relation(fields: [answersId], references: [id])
-  
+  aiFeedBacks AiFeedBacks @relation(fields: [aiFeedBackId], references: [id])
 
   @@map("reports")
 }
 
 model AiFeedBacks {
   id        Int      @id @default(autoincrement())
-  userId    Int      @map("user_id")
   aiFeedBack  String  @map("ai_feedback")
   createdAt DateTime @default(now()) @map("created_at")
 
-  user  User  @relation(fields: [userId], references: [id])
-
+  reports Reports[]
   @@map("ai_feedbacks")
 }
