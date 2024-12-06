@@ -21,12 +21,13 @@ import { JwtAuthGuard } from "../auth/guard/jwt-auth.guard";
 import { UpdateUserPayload } from "./payload/update-user.payload";
 import { CurrentUser } from "../auth/decorator/user.decorator";
 import { UserBaseInfo } from "../auth/type/user-base-info.type";
-
+import { ApiTags } from "@nestjs/swagger";
 @Controller("users")
+@ApiTags("user API")
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get(":userId")
+  @Get()
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOperation({ summary: "유저 정보를 가져옵니다" })

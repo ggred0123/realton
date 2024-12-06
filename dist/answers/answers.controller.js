@@ -53,7 +53,8 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AnswersController.prototype, "getAnswers", null);
 exports.AnswersController = AnswersController = __decorate([
-    (0, common_1.Controller)("users"),
+    (0, common_1.Controller)("answers"),
+    (0, swagger_1.ApiTags)("answers API"),
     __metadata("design:paramtypes", [answers_service_1.AnswersService])
 ], AnswersController);
 //# sourceMappingURL=answers.controller.js.map

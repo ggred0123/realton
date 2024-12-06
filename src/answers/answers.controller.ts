@@ -16,6 +16,7 @@ import {
   ApiNoContentResponse,
   ApiOkResponse,
   ApiOperation,
+  ApiTags,
 } from "@nestjs/swagger";
 import { JwtAuthGuard } from "../auth/guard/jwt-auth.guard";
 import { CurrentUser } from "../auth/decorator/user.decorator";
@@ -24,7 +25,8 @@ import { AnswersService } from "./answers.service";
 import { CreateAnswersPayload } from "./payload/create-answers.payload";
 import { query } from "express";
 import { DateQuery } from "./query/date.query";
-@Controller("users")
+@Controller("answers")
+@ApiTags("answers API")
 export class AnswersController {
   constructor(private readonly answerService: AnswersService) {}
 

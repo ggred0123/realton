@@ -12,37 +12,37 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserController = void 0;
+exports.ReportsController = void 0;
 const common_1 = require("@nestjs/common");
-const user_service_1 = require("./user.service");
 const swagger_1 = require("@nestjs/swagger");
-const user_dto_1 = require("./dto/user.dto");
+const reports_service_1 = require("./reports.service");
 const jwt_auth_guard_1 = require("../auth/guard/jwt-auth.guard");
+const reports_dto_1 = require("./dto/reports.dto");
 const user_decorator_1 = require("../auth/decorator/user.decorator");
-const swagger_2 = require("@nestjs/swagger");
-let UserController = class UserController {
-    constructor(userService) {
-        this.userService = userService;
+const reports_query_1 = require("./query/reports.query");
+let ReportsController = class ReportsController {
+    constructor(reportsService) {
+        this.reportsService = reportsService;
     }
-    async getUser(user) {
-        return this.userService.getUser(user);
+    async getReports(query, user) {
+        return this.reportsService.getReportsByDate(query);
     }
 };
-exports.UserController = UserController;
+exports.ReportsController = ReportsController;
 __decorate([
     (0, common_1.Get)(),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, swagger_1.ApiBearerAuth)(),
-    (0, swagger_1.ApiOperation)({ summary: "유저 정보를 가져옵니다" }),
-    (0, swagger_1.ApiOkResponse)({ type: user_dto_1.UserDto }),
-    __param(0, (0, user_decorator_1.CurrentUser)()),
+    (0, swagger_1.ApiOperation)({ summary: "리포트 정보를 가져옵니다" }),
+    (0, swagger_1.ApiOkResponse)({ type: reports_dto_1.ReportsDto }),
+    __param(0, (0, common_1.Query)()),
+    __param(1, (0, user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [reports_query_1.DateQuery, Object]),
     __metadata("design:returntype", Promise)
-], UserController.prototype, "getUser", null);
-exports.UserController = UserController = __decorate([
-    (0, common_1.Controller)("users"),
-    (0, swagger_2.ApiTags)("user API"),
-    __metadata("design:paramtypes", [user_service_1.UserService])
-], UserController);
-//# sourceMappingURL=user.controller.js.map
+], ReportsController.prototype, "getReports", null);
+exports.ReportsController = ReportsController = __decorate([
+    (0, common_1.Controller)("reports"),
+    __metadata("design:paramtypes", [reports_service_1.ReportsService])
+], ReportsController);
+//# sourceMappingURL=reports.controller.js.map
