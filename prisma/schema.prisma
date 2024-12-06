@@ -68,11 +68,23 @@ model Reports {
   id        Int      @id @default(autoincrement())
   userId    Int      @map("user_id") 
   answersId Int      @map("answers_id")
-  aiFeedBack  String  @map("ai_feedback")
+  aiFeedBackId  Int  @map("ai_feedback_id")
   createdAt DateTime @default(now()) @map("created_at")
 
   user  User  @relation(fields: [userId], references: [id])
   answers Answers @relation(fields: [answersId], references: [id])
+  
 
   @@map("reports")
+}
+
+model AiFeedBacks {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  aiFeedBack  String  @map("ai_feedback")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user  User  @relation(fields: [userId], references: [id])
+
+  @@map("ai_feedbacks")
 }
