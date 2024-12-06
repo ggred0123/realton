@@ -34,6 +34,15 @@ AI 기반 웹서비스를 통해 사용자의 일과를 분석하여 기후 변�
 </div>
 <!-- <img width="614" alt="아키텍처이미지" src="https://github.com/user-attachments/assets/bdd54eb5-da96-4838-938c-7c82fb0d820b"> -->
 
+### 🛠️ **UX/UI** 
+
+- `UX`
+  - 부드러운 ux 라이팅 사용(https://toss.tech/article/8-writing-principles-of-toss)
+  - 접근성 고려한 코드 작성(https://tech.kakaopay.com/post/accessibility-stories-for-everyone/)
+  - 선택적 번들 파일 로드를 통해 불필요한 리소스 로드 방지, 깜박이는 로딩 화면 방지(https://tech.kakaopay.com/post/skeleton-ui-idea/)
+- `UI`
+  - 환경 주제에 걸맞는 primary color(green) 선정
+
 ---
 <div align="center">
 <h2>멤버</h2>
