@@ -1,1 +1,1 @@
-echo ".dev.env" >> .gitignore
+.dev.env
