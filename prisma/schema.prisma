@@ -14,58 +14,65 @@ datasource db {
 }
 
 model User {
-  id           Int      @id @default(autoincrement())
+  id           Int       @id @default(autoincrement())
   name         String
-  email        String   @unique
+  email        String    @unique
   password     String
   totalExp     Int
-  refreshToken String?  @map("refresh_token")
-  createdAt    DateTime @default(now()) @map("created_at")
-  updatedAt    DateTime @updatedAt @map("updated_at")
+  refreshToken String?   @map("refresh_token")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
 
-  answer   Answer[]
-  dailyexp DailyExp[]
-  report   Report[]
+  answers     Answers[]
+  dailyexp  DailyExp[]
+  reports    Reports[]
+
+  
 
   @@map("user")
 }
-
 //daily ai답변 한번에
 
-model Answer {
+model Answers {
   id        Int      @id @default(autoincrement())
   userId    Int      @map("user_id")
   replies   String[]
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  report Report[]
+  reports Reports[]
 
-  user User @relation(fields: [userId], references: [id])
+  user  User  @relation(fields: [userId], references: [id])
 
-  @@map("answer")
+
+  @@map("answers")
 }
 
 //경험치
 model DailyExp {
-  id        Int      @id @default(autoincrement())
-  userId    Int      @map("user_id")
-  exp       Int
-  createdAt DateTime @default(now()) @map("created_at")
+  id          Int      @id @default(autoincrement())
+  userId      Int      @map("user_id")
+  exp         Int
+  createdAt   DateTime @default(now()) @map("created_at")
 
-  user User @relation(fields: [userId], references: [id])
+
+  user     User     @relation(fields: [userId], references: [id])
+
+
 
   @@map("daily_exp")
 }
+           
 
-model Report {
-  id         Int      @id @default(autoincrement())
-  userId     Int      @map("user_id")
-  answerId   Int      @map("answer_id")
-  aiFeedBack String   @map("ai_feedback")
-  createdAt  DateTime @default(now()) @map("created_at")
-  user       User     @relation(fields: [userId], references: [id])
-  answer     Answer   @relation(fields: [answerId], references: [id])
+model Reports {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id") 
+  answersId Int      @map("answers_id")
+  aiFeedBack  String  @map("ai_feedback")
+  createdAt DateTime @default(now()) @map("created_at")
 
-  @@map("report")
+  user  User  @relation(fields: [userId], references: [id])
+  answers Answers @relation(fields: [answersId], references: [id])
+
+  @@map("reports")
 }
