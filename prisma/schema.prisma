@@ -55,7 +55,6 @@ model DailyExp {
   exp         Int
   createdAt   DateTime @default(now()) @map("created_at")
 
-
   user     User     @relation(fields: [userId], references: [id])
 
 
@@ -68,21 +67,13 @@ model Reports {
   id        Int      @id @default(autoincrement())
   userId    Int      @map("user_id") 
   answersId Int      @map("answers_id")
-  aiFeedBackId  Int  @map("ai_feedback_id")
+  aiFeedBack  String  @map("ai_feedback")
   createdAt DateTime @default(now()) @map("created_at")
+
 
   user  User  @relation(fields: [userId], references: [id])
   answers Answers @relation(fields: [answersId], references: [id])
-  aiFeedBacks AiFeedBacks @relation(fields: [aiFeedBackId], references: [id])
 
   @@map("reports")
 }
 
-model AiFeedBacks {
-  id        Int      @id @default(autoincrement())
-  aiFeedBack  String  @map("ai_feedback")
-  createdAt DateTime @default(now()) @map("created_at")
-
-  reports Reports[]
-  @@map("ai_feedbacks")
-}
