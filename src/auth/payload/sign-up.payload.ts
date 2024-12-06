@@ -24,29 +24,10 @@ export class SignUpPayload {
   })
   name!: string;
 
-  @IsOptional()
-  @IsDate()
-  @Type(() => Date)
-  @ApiProperty({
-    description: '생년월일',
-    type: Date,
-    nullable: true,
-  })
-  birthday?: Date | null;
-
-  @IsOptional()
   @IsInt()
   @ApiProperty({
-    description: '도시 ID',
-    type: Number,
-    nullable: true,
-  })
-  cityId?: number | null;
-
-  @IsInt()
-  @ApiProperty({
-    description: '카테고리 ID',
+    description: '경험치',
     type: Number,
   })
-  categoryId!: number;
+  totalExp!: number;
 }

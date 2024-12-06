@@ -3,8 +3,6 @@ export type UserBaseInfo = {
   email: string;
   password: string;
   name: string;
-  birthday: Date | null;
-  cityId: number | null;
-  categoryId: number;
+  totalExp: number;
   refreshToken: string | null;
 };

@@ -1,7 +1,6 @@
 import { PrismaService } from '../common/services/prisma.service';
 import { Injectable } from '@nestjs/common';
 import { UserBaseInfo } from './type/user-base-info.type';
-import { Category, City } from '@prisma/client';
 import { SignUpData } from './type/sign-up-data.type';
 import { UpdateUserData } from './type/update-user-data.type';
 
@@ -15,18 +14,14 @@ export class AuthRepository {
         email: data.email,
         password: data.password,
         name: data.name,
-        birthday: data.birthday,
-        categoryId: data.categoryId,
-        cityId: data.cityId,
+        totalExp: data.totalExp,
       },
       select: {
         id: true,
         email: true,
         password: true,
         name: true,
-        birthday: true,
-        categoryId: true,
-        cityId: true,
+        totalExp: true,
         refreshToken: true,
       },
     });
@@ -41,9 +36,7 @@ export class AuthRepository {
         email: data.email,
         password: data.password,
         name: data.name,
-        birthday: data.birthday,
-        categoryId: data.categoryId,
-        cityId: data.cityId,
+        totalExp: data.totalExp,
         refreshToken: data.refreshToken,
       },
       select: {
@@ -51,9 +44,7 @@ export class AuthRepository {
         email: true,
         password: true,
         name: true,
-        birthday: true,
-        categoryId: true,
-        cityId: true,
+        totalExp: true,
         refreshToken: true,
       },
     });
@@ -63,16 +54,13 @@ export class AuthRepository {
     return this.prisma.user.findUnique({
       where: {
         id: id,
-        deletedAt: null,
       },
       select: {
         id: true,
         email: true,
         password: true,
         name: true,
-        birthday: true,
-        categoryId: true,
-        cityId: true,
+        totalExp: true,
         refreshToken: true,
       },
     });
@@ -82,33 +70,14 @@ export class AuthRepository {
     return this.prisma.user.findUnique({
       where: {
         email,
-        deletedAt: null,
       },
       select: {
         id: true,
         email: true,
         password: true,
         name: true,
-        birthday: true,
-        categoryId: true,
-        cityId: true,
+        totalExp: true,
         refreshToken: true,
-      },
-    });
-  }
-
-  async getCategoryById(id: number): Promise<Category | null> {
-    return this.prisma.category.findUnique({
-      where: {
-        id,
-      },
-    });
-  }
-
-  async getCityById(id: number): Promise<City | null> {
-    return this.prisma.city.findUnique({
-      where: {
-        id,
       },
     });
   }

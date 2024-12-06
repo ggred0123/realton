@@ -2,8 +2,6 @@ export type UpdateUserData = {
   email?: string;
   password?: string;
   name?: string;
-  birthday?: Date | null;
-  categoryId?: number;
-  cityId?: number | null;
+  totalExp?: number;
   refreshToken?: string | null;
 };

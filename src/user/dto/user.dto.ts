@@ -21,33 +21,19 @@ export class UserDto {
   name!: string;
 
   @ApiProperty({
-    description: '생일',
-    type: Date,
-    nullable: true,
-  })
-  birthday!: Date | null;
-
-  @ApiProperty({
-    description: '도시 ID',
-    type: Number,
-    nullable: true,
-  })
-  cityId!: number | null;
-
-  @ApiProperty({
-    description: '카테고리 ID',
+    description: '경험치',
     type: Number,
   })
-  categoryId!: number;
+  totalExp!: number;
+  
+
 
   static from(data: UserData): UserDto {
     return {
       id: data.id,
       email: data.email,
       name: data.name,
-      birthday: data.birthday,
-      cityId: data.cityId,
-      categoryId: data.categoryId,
+      totalExp: data.totalExp
     };
   }
 }
