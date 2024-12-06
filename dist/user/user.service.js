@@ -17,11 +17,7 @@ let UserService = class UserService {
     constructor(userRepository) {
         this.userRepository = userRepository;
     }
-    async getUserById(userId) {
-        const user = await this.userRepository.getUserById(userId);
-        if (!user) {
-            throw new common_1.NotFoundException('사용자를 찾을 수 없습니다.');
-        }
+    async getUser(user) {
         return user_dto_1.UserDto.from(user);
     }
 };

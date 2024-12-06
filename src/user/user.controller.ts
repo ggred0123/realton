@@ -28,6 +28,7 @@ export class UserController {
 
   @Get(":userId")
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @ApiOperation({ summary: "유저 정보를 가져옵니다" })
   @ApiOkResponse({ type: UserDto })
   async getUser(@CurrentUser() user: UserBaseInfo): Promise<UserDto> {

@@ -11,6 +11,7 @@ import {
   Max,
   Min,
 } from "class-validator";
+import { Type } from "class-transformer";
 
 export class CreateAnswersPayload {
   @IsString({ each: true })
@@ -18,5 +19,13 @@ export class CreateAnswersPayload {
     description: "유저 응답들",
     type: [String],
   })
-  title!: string[];
+  replies!: string[];
+
+  @IsDate()
+  @Type(() => Date)
+  @ApiProperty({
+    description: "만들어진 날짜",
+    type: Date,
+  })
+  createdAt!: Date;
 }

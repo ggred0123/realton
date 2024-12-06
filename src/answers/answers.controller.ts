@@ -9,6 +9,7 @@ import {
   Patch,
   UseGuards,
   Post,
+  Query,
 } from "@nestjs/common";
 import {
   ApiBearerAuth,
@@ -19,11 +20,13 @@ import {
 import { JwtAuthGuard } from "../auth/guard/jwt-auth.guard";
 import { CurrentUser } from "../auth/decorator/user.decorator";
 import { UserBaseInfo } from "../auth/type/user-base-info.type";
-import { AnswerService } from "./answer.service";
+import { AnswersService } from "./answers.service";
 import { CreateAnswersPayload } from "./payload/create-answers.payload";
+import { query } from "express";
+import { DateQuery } from "./query/date.query";
 @Controller("users")
-export class AnswerController {
-  constructor(private readonly answerService: AnswerService) {}
+export class AnswersController {
+  constructor(private readonly answerService: AnswersService) {}
 
   @Post()
   @UseGuards(JwtAuthGuard)
@@ -33,5 +36,15 @@ export class AnswerController {
     @CurrentUser() user: UserBaseInfo
   ) {
     return this.answerService.createAnswers(createAnswersPayload, user);
+  }
+
+  @Get()
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  async getAnswers(
+    @Query() query: DateQuery,
+    @CurrentUser() user: UserBaseInfo
+  ) {
+    return this.answerService.getAnswersByDate(query, user);
   }
 }

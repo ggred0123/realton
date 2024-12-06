@@ -1,7 +1,8 @@
-import { UserRepository } from './user.repository';
-import { UserDto } from './dto/user.dto';
+import { UserRepository } from "./user.repository";
+import { UserBaseInfo } from "../auth/type/user-base-info.type";
+import { UserDto } from "./dto/user.dto";
 export declare class UserService {
     private readonly userRepository;
     constructor(userRepository: UserRepository);
-    getUserById(userId: number): Promise<UserDto>;
+    getUser(user: UserBaseInfo): Promise<UserDto>;
 }

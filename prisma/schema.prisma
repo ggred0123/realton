@@ -13,6 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
 model User {
   id           Int       @id @default(autoincrement())
   name         String
@@ -22,7 +23,6 @@ model User {
   refreshToken String?   @map("refresh_token")
   createdAt    DateTime  @default(now()) @map("created_at")
   updatedAt    DateTime  @updatedAt @map("updated_at")
-
   answers     Answers[]
   dailyexp  DailyExp[]
   reports    Reports[]
@@ -55,7 +55,6 @@ model DailyExp {
   exp         Int
   createdAt   DateTime @default(now()) @map("created_at")
 
-
   user     User     @relation(fields: [userId], references: [id])
 
 
@@ -71,8 +70,10 @@ model Reports {
   aiFeedBack  String  @map("ai_feedback")
   createdAt DateTime @default(now()) @map("created_at")
 
+
   user  User  @relation(fields: [userId], references: [id])
   answers Answers @relation(fields: [answersId], references: [id])
 
   @@map("reports")
 }
+

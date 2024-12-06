@@ -22,6 +22,9 @@ ALTER TABLE "city" DROP CONSTRAINT "city_region_id_fkey";
 ALTER TABLE "event" DROP CONSTRAINT "event_category_id_fkey";
 
 -- DropForeignKey
+ALTER TABLE "event" DROP CONSTRAINT "event_city_id_fkey";
+
+-- DropForeignKey
 ALTER TABLE "event" DROP CONSTRAINT "event_host_id_fkey";
 
 -- DropForeignKey

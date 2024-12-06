@@ -1,7 +1,8 @@
-import { PrismaService } from '../common/services/prisma.service';
-import { Injectable } from '@nestjs/common';
-import { User } from '@prisma/client';
-import { UpdateUserData } from '../auth/type/update-user-data.type';
+import { PrismaService } from "../common/services/prisma.service";
+import { Injectable } from "@nestjs/common";
+import { User } from "@prisma/client";
+import { UpdateUserData } from "../auth/type/update-user-data.type";
+import { UserData } from "./type/user-data.type";
 
 @Injectable()
 export class UserRepository {
@@ -24,6 +25,4 @@ export class UserRepository {
 
     return !!user;
   }
-
 }
-

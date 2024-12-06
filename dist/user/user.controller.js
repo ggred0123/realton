@@ -17,26 +17,30 @@ const common_1 = require("@nestjs/common");
 const user_service_1 = require("./user.service");
 const swagger_1 = require("@nestjs/swagger");
 const user_dto_1 = require("./dto/user.dto");
+const jwt_auth_guard_1 = require("../auth/guard/jwt-auth.guard");
+const user_decorator_1 = require("../auth/decorator/user.decorator");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
     }
-    async getUserById(userId) {
-        return this.userService.getUserById(userId);
+    async getUser(user) {
+        return this.userService.getUser(user);
     }
 };
 exports.UserController = UserController;
 __decorate([
-    (0, common_1.Get)(':userId'),
-    (0, swagger_1.ApiOperation)({ summary: '유저 정보를 가져옵니다' }),
+    (0, common_1.Get)(":userId"),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, swagger_1.ApiBearerAuth)(),
+    (0, swagger_1.ApiOperation)({ summary: "유저 정보를 가져옵니다" }),
     (0, swagger_1.ApiOkResponse)({ type: user_dto_1.UserDto }),
-    __param(0, (0, common_1.Param)('userId')),
+    __param(0, (0, user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
-], UserController.prototype, "getUserById", null);
+], UserController.prototype, "getUser", null);
 exports.UserController = UserController = __decorate([
-    (0, common_1.Controller)('users'),
+    (0, common_1.Controller)("users"),
     __metadata("design:paramtypes", [user_service_1.UserService])
 ], UserController);
 //# sourceMappingURL=user.controller.js.map
