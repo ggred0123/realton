@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { EventData } from '../type/Reports-data.type';
+import { ReportsData } from '../type/Reports-data.type';
 
-export class SimpleUserDto {
+export class ReportsDto {
   @ApiProperty({
     description: '리포트 ID',
     type: Number,
@@ -33,7 +33,7 @@ export class SimpleUserDto {
   createdAt!: Date;
 
 
-  static from(data: any): SimpleUserDto {
+  static from(data: any): ReportsDto {
     return {
       id: data.id,
       user_id: data.userId,

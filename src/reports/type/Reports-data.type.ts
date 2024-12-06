@@ -1,13 +1,7 @@
-export type EventData = {
+export type ReportsData = {
   id: number;
-  hostId: number;
-  title: string;
-  description: string;
-  categoryId: number;
-  eventCity: {
-    cityId: number;
-  }[];
-  startTime: Date;
-  endTime: Date;
-  maxPeople: number;
+  userId: number;
+  answersId: number;
+  aiFeedBack: string;
+  createdAt: Date;
 };
