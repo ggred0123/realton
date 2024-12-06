@@ -17,21 +17,11 @@ let AppController = class AppController {
     constructor(appService) {
         this.appService = appService;
     }
-    getHello() {
-        return this.appService.healthCheck();
-    }
 };
 exports.AppController = AppController;
-__decorate([
-    (0, common_1.Get)('health'),
-    (0, swagger_1.ApiOperation)({ summary: 'Health check' }),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", String)
-], AppController.prototype, "getHello", null);
 exports.AppController = AppController = __decorate([
     (0, common_1.Controller)(),
-    (0, swagger_1.ApiTags)('Eventory'),
+    (0, swagger_1.ApiTags)("Realton"),
     __metadata("design:paramtypes", [app_service_1.AppService])
 ], AppController);
 //# sourceMappingURL=app.controller.js.map

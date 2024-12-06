@@ -22,10 +22,10 @@ async function bootstrap() {
         prefix: "/uploads/",
     });
     const config = new swagger_1.DocumentBuilder()
-        .setTitle("Eventory Server")
-        .setDescription("Eventory API description")
+        .setTitle("Realton Server")
+        .setDescription("Realton API description")
         .setVersion("1.0")
-        .addTag("Eventory")
+        .addTag("Realton")
         .addBearerAuth()
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config);
