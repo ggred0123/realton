@@ -27,8 +27,7 @@ AI 기반 웹서비스를 통해 사용자의 일과를 분석하여 기후 변�
 <br>
 
 ### ⛭ **기술 스택**
-<img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=NestJS&logoColor=white"> <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=Supabase&logoColor=white"> 
-
+<img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=NestJS&logoColor=white"> <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=Supabase&logoColor=white"> <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white">
 ### 🛠️ **백엔드 아키텍처**  
 <div align="center">
   <img width="990" alt="KakaoTalk_20241207_053906698" src="https://github.com/user-attachments/assets/d6759fff-1733-4a3e-9457-3a69d16c275f">
